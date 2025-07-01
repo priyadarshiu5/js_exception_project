@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>js_exception_project</title>
+</head>
+<body>
+  <h1>Open the console to see the output</h1>
+
+  <script>
+    // 1. Write a program to handle the exception caused by printing the variable without declaring it for js
+    try {
+      console.log(myVar);
+    } catch (error) {
+      console.error("Error:", error.message);
+    }
+
+    // 2. Write a program to throw "divide by Zero" error using throw statement when a number is divided by Zero.
+    function divide(a, b) {
+      if (b === 0) {
+        throw new Error("divide by Zero");
+      }
+      return a / b;
+    }
+
+    try {
+      let result = divide(10, 0);
+      console.log("Division Result:", result);
+    } catch (error) {
+      console.error("Error:", error.message);
+    }
+
+
+    // 3. Write a program to throw "out of bound error" error using throw statement when a program try to access an array index which is not present.
+    function accessArrayElement(arr, index) {
+      if (index < 0 || index >= arr.length) {
+        throw new Error("out of bound error");
+      }
+      return arr[index];
+    }
+
+    try {
+      let myArray = [10, 20, 30];
+      let element = accessArrayElement(myArray, 5);
+      console.log("Array Element:", element);
+    } catch (error) {
+      console.error("Error:", error.message);
+    }
+
+
+    // 4. Write a program of exception handling using finally statement.
+    function safeDivide(a, b) {
+      try {
+        if (b === 0) {
+          throw new Error("Cannot divide by zero");
+        }
+        console.log("Safe Division Result:", a / b);
+      } catch (error) {
+        console.error("Error:", error.message);
+      } finally {
+        console.log("Execution completed (inside finally block)");
+      }
+    }
+
+    safeDivide(20, 0);
+  </script>
+</body>
+</html>
